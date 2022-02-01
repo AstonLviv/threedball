@@ -7,6 +7,8 @@ var express = require("express");
 var gameName = "ThreeDBallAndCube";
 var publicBase = process.env.gameurl;
 var bot = botgram(process.env.bottoken);
+var port = process.env.PORT || 3103;
+var url = process.env.URL;
 
 var server = express();
 
@@ -52,11 +54,13 @@ server.get("/telegramBot/test.html", function (req, res, next) {
   res.send("<h1>It works!</h1> <p>Server set up successfully. Use <a href=\"" + bot.linkGame(gameName) + "\">this link</a> to play the game.");
 });
 
-server.listen(3103, function () {
+server.listen(port, function () {
   bot.ready(function () {
     console.log("Server & bot ready.\nOpen %s to verify that the HTTP server is accessible publicly.", url.resolve(publicBase, "/telegramBot/test.html"));
     console.log("To play, send /game or use the following link to play:\n");
     console.log("  %s\n", bot.linkGame(gameName));
+    console.log("Using port: %s\n", port);
+    console.log("Using url: %s\n", url);
   });
 });
 
