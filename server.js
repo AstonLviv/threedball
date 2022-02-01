@@ -28,7 +28,7 @@ bot.callback(function (query, next) {
   queries[query.id] = query;
   query.answer({
     //url: url.resolve(publicBase, "/telegramBot/game.html?id="+query.id)
-    url: url.resolve(publicBase, "?id="+query.id)
+    url: url.resolve(publicBase, "?id="+query.id+"?un="+query.from.name+"?pt="+port)
   });
 });
 
@@ -38,7 +38,7 @@ server.get("/telegramBot/game.html", function (req, res, next) {
   res.sendFile(__dirname + "/game.html");
 });
 
-server.get("/telegramBot/submitExplode/:score", function (req, res, next) {
+server.get("/submit/:score", function (req, res, next) {
   if (!Object.hasOwnProperty.call(queries, req.query.id)) return next();
   res.send("score submitted");
   var query = queries[req.query.id];
