@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-if (process.argv.length !== 4) {
-  console.error("Usage: ./server.js <auth token> <webserver base URL>\nSee the README.");
-  process.exit(1);
-}
+#if (process.argv.length !== 4) {
+#  console.error("Usage: ./server.js <auth token> <webserver base URL>\nSee the README.");
+#  process.exit(1);
+#}
 
 
 var url = require("url");
@@ -11,9 +11,10 @@ var botgram = require("botgram");
 var express = require("express");
 
 var gameName = "ThreeDBallAndCube";
-var publicBase = process.argv[3];
-var bot = botgram(process.argv[2]);
-
+#var publicBase = process.argv[3];
+var publicBase = process.env.gameurl;
+#var bot = botgram(process.argv[2]);
+var bot = botgram(process.env.bottoken);
 
 var server = express();
 
