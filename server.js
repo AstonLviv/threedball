@@ -8,7 +8,7 @@ var gameName = "ThreeDBallAndCube";
 var publicBase = process.env.gameurl;
 var bot = botgram(process.env.bottoken);
 var port = process.env.PORT || 3103;
-var url = process.env.URL;
+var hurl = process.env.URL;
 
 var server = express();
 
@@ -60,7 +60,7 @@ server.listen(port, function () {
     console.log("To play, send /game or use the following link to play:\n");
     console.log("  %s\n", bot.linkGame(gameName));
     console.log("Using port: %s\n", port);
-    console.log("Using url: %s\n", url);
+    console.log("Using url: %s\n", hurl);
   });
 });
 
